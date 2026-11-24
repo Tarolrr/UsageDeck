@@ -1,3 +1,4 @@
+pub mod abliteration;
 pub mod antigravity;
 pub mod api_key;
 pub mod api_key_account;
@@ -10,6 +11,7 @@ pub mod cursor;
 mod daily_usage;
 mod detection;
 pub mod devin;
+pub mod experiential;
 pub mod grok;
 mod http;
 pub mod kimi;
@@ -22,6 +24,7 @@ mod pi_usage;
 mod registry;
 #[cfg(test)]
 pub mod test_http;
+pub mod vast;
 pub mod zai;
 
 /// Implements `Debug` for a token-bearing struct by printing every listed

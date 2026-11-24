@@ -91,6 +91,7 @@ const FONT_SOURCE: &[u8] = include_bytes!("../assets/fonts/Poppins-SemiBold.ttf"
 const BRAND_SOURCE: &str = include_str!("../../assets/usagedeck-tray.svg");
 
 const CLAUDE_ICON: &str = include_str!("../../src/assets/provider-icons/claude.svg");
+const ABLITERATION_ICON: &str = include_str!("../../src/assets/provider-icons/abliteration.svg");
 const COMMANDCODE_ICON: &str = include_str!("../../src/assets/provider-icons/commandcode.svg");
 const CODEX_ICON: &str = include_str!("../../src/assets/provider-icons/codex.svg");
 const COPILOT_ICON: &str = include_str!("../../src/assets/provider-icons/copilot.svg");
@@ -103,6 +104,8 @@ const OPENROUTER_ICON: &str = include_str!("../../src/assets/provider-icons/open
 const ZAI_ICON: &str = include_str!("../../src/assets/provider-icons/zai.svg");
 const KIMI_ICON: &str = include_str!("../../src/assets/provider-icons/kimi.svg");
 const MINIMAX_ICON: &str = include_str!("../../src/assets/provider-icons/minimax.svg");
+const EXPERIENTIAL_ICON: &str = include_str!("../../src/assets/provider-icons/experiential.svg");
+const VAST_ICON: &str = include_str!("../../src/assets/provider-icons/vast.svg");
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct TextGroup {
@@ -458,6 +461,7 @@ fn provider_path(provider_id: &str) -> Option<&'static Path> {
     }
 
     static CLAUDE: OnceLock<Path> = OnceLock::new();
+    static ABLITERATION: OnceLock<Path> = OnceLock::new();
     static COMMANDCODE: OnceLock<Path> = OnceLock::new();
     static CODEX: OnceLock<Path> = OnceLock::new();
     static COPILOT: OnceLock<Path> = OnceLock::new();
@@ -470,7 +474,10 @@ fn provider_path(provider_id: &str) -> Option<&'static Path> {
     static ZAI: OnceLock<Path> = OnceLock::new();
     static KIMI: OnceLock<Path> = OnceLock::new();
     static MINIMAX: OnceLock<Path> = OnceLock::new();
+    static VAST: OnceLock<Path> = OnceLock::new();
+    static EXPERIENTIAL: OnceLock<Path> = OnceLock::new();
     match crate::providers::provider_family(provider_id) {
+        "abliteration" => Some(parsed(ABLITERATION_ICON, &ABLITERATION)),
         "claude" => Some(parsed(CLAUDE_ICON, &CLAUDE)),
         "commandcode" => Some(parsed(COMMANDCODE_ICON, &COMMANDCODE)),
         "codex" => Some(parsed(CODEX_ICON, &CODEX)),
@@ -484,6 +491,8 @@ fn provider_path(provider_id: &str) -> Option<&'static Path> {
         "zai" => Some(parsed(ZAI_ICON, &ZAI)),
         "kimi" => Some(parsed(KIMI_ICON, &KIMI)),
         "minimax" => Some(parsed(MINIMAX_ICON, &MINIMAX)),
+        "vast" => Some(parsed(VAST_ICON, &VAST)),
+        "experiential" => Some(parsed(EXPERIENTIAL_ICON, &EXPERIENTIAL)),
         _ => None,
     }
 }
@@ -684,6 +693,7 @@ mod tests {
     #[test]
     fn bundled_provider_marks_and_font_render_into_a_retina_text_strip() {
         for provider in [
+            "abliteration",
             "claude",
             "commandcode",
             "codex",
@@ -697,6 +707,8 @@ mod tests {
             "zai",
             "kimi",
             "minimax",
+            "vast",
+            "experiential",
         ] {
             let path = provider_path(provider).expect("known provider mark should exist");
             assert!(path.bounds().width() > 0.0);

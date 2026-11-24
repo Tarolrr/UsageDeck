@@ -1,4 +1,5 @@
 import antigravity from '../assets/provider-icons/antigravity.svg?raw';
+import abliteration from '../assets/provider-icons/abliteration.svg?raw';
 import claude from '../assets/provider-icons/claude.svg?raw';
 import commandcode from '../assets/provider-icons/commandcode.svg?raw';
 import codex from '../assets/provider-icons/codex.svg?raw';
@@ -11,8 +12,11 @@ import minimax from '../assets/provider-icons/minimax.svg?raw';
 import opencode from '../assets/provider-icons/opencode.svg?raw';
 import openrouter from '../assets/provider-icons/openrouter.svg?raw';
 import zai from '../assets/provider-icons/zai.svg?raw';
+import experiential from '../assets/provider-icons/experiential.svg?raw';
+import vast from '../assets/provider-icons/vast.svg?raw';
 
 const visuals: Record<string, { source: string; color: string | null }> = {
+  abliteration: { source: abliteration, color: null },
   antigravity: { source: antigravity, color: '#4285F4' },
   claude: { source: claude, color: '#DE7356' },
   commandcode: { source: commandcode, color: '#6A5CFF' },
@@ -26,6 +30,8 @@ const visuals: Record<string, { source: string; color: string | null }> = {
   opencode: { source: opencode, color: null },
   openrouter: { source: openrouter, color: null },
   zai: { source: zai, color: null },
+  vast: { source: vast, color: '#6F3FF5' },
+  experiential: { source: experiential, color: '#E4572E' },
 };
 
 export function providerFamily(providerId: string) {
@@ -49,6 +55,7 @@ export function providerIconViewBox(providerId: string) {
 }
 
 const accentTokens: Record<string, string> = {
+  abliteration: 'var(--provider-abliteration)',
   antigravity: 'var(--provider-antigravity)',
   claude: 'var(--provider-claude)',
   commandcode: 'var(--provider-commandcode)',
@@ -58,6 +65,8 @@ const accentTokens: Record<string, string> = {
   kimi: 'var(--provider-kimi)',
   minimax: 'var(--provider-minimax)',
   openrouter: 'var(--provider-openrouter)',
+  vast: 'var(--provider-vast)',
+  experiential: 'var(--provider-experiential)',
 };
 
 export function providerAccent(providerId: string) {
